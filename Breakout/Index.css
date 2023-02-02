@@ -1,0 +1,59 @@
+
+body {
+    background-color: rgb(39, 37, 37);
+}
+
+.container {
+    position: absolute;
+    background-image: url('Images/Background.jpg');
+    background-size: cover;
+    width: 73vw; /*992.8px*/
+    height: 99vh; /* Problems here that do not ocurr when it's changed to 768px */
+    right: 183.6px;
+    top: 3px;
+}
+
+.grid {
+    position: absolute;
+    right: 10px;
+    display: grid;
+    width: 975px;
+    height: 184px;
+    margin-top: 5px;
+    grid-template-columns: repeat(15, 1fr);
+}
+
+.block {
+    position: absolute;
+    width: 65px;
+    height: 23px;
+    left: 0px;
+    top: 0px;
+}
+
+.ball {
+    position: absolute;
+    background-image: url('Images/Ball.png');
+    background-size: cover;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.bar {
+    position: absolute;
+    background-image: url('Images/Bar1.png');
+    width: 83px;
+    height: 17px;
+    bottom: 27px;
+}
+
+.info {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    background-color: hsla(0, 0%, 100%, 0.274);
+    min-height: 25px;
+    width: 100%;
+}
+

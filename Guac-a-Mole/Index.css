@@ -1,0 +1,58 @@
+body {
+    background-image: url('Images/Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 1360px;
+    max-height: 768px;
+}
+
+h2 {
+    display: inline-block;
+    padding: 10px;
+    padding-right: 1.5rem;
+    margin-left: 15px;
+    color: darkred;
+    background-color: black;
+    border: darkred solid 3px;
+    border-radius: 10px;
+    max-width: 20rem;
+}
+
+button {
+    font-weight: bolder;
+    font-size: larger;
+    margin-left: 21rem;
+    padding: 10px;
+    color: darkred;
+    background-color: black;
+    border: solid darkred 3px;
+    border-radius: 10px;
+}
+
+#info-block {
+    margin-bottom: 5px;
+}
+
+.grid {
+    display: grid;
+    background-color: darkred;
+    border: black solid 3px;
+    margin: auto;
+    height: 75vh;
+    width: 75vh;
+    padding: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px 20px;
+}
+
+.cell {
+    font-size: 3rem;
+    text-align: center;
+    border: dimgrey solid 5px;
+    background: black;
+}
+
+.mole {
+    background-image: url('Images/Beholder.png');
+    background-size: cover;
+}

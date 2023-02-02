@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>People Entered: </h1>
+    <h2 id="count-el">0</h2>
+    <!-- Here we create each button with a 'onclick' attribute for the event listener in js -->
+    <button id="increment-btn" onclick="increment()">INCREMENT</button>
+    <div>
+        <button id="decrease-btn" onclick="decrease()">DECREASE</button>
+    </div>
+    <div>
+        <button id="restart-btn" onclick="restart()">RESTART</button>
+    </div>
+    <div>
+        <button id="save-btn" onclick="save()">SAVE</button>
+    </div>
+    <div>
+        <h3 id="saved-accounts">Saved accounts: </h3>
+    </div>
+    <script src="Index.js"></script> <!--This is the way of pointing to our actual scripts-->
+</body>
+</html>

@@ -1,0 +1,24 @@
+
+body {
+    background-image: url('Images/Background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    max-width: 1360px;
+    max-height: 768px;
+}
+
+#grid {
+    min-height: 75vh;
+    max-width: 55vh;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#result {
+    text-align: center;
+    font-size: 100px;
+    color: darkred;
+    background-color: black;
+    border-radius: 40px;
+}
