@@ -65,33 +65,19 @@
             <div class="cell" id="e">E</div>
             <div class="cell" id="selector">Dwarf, Elf, Human, Ork, Troll (1)</div>
             <div class="cell" id="selector">2</div>
-            <div class="cell" id="selector">
-                <div><b>Magician, Mystic Adept, Adept:</b> Magic 1</div>
-                <div><b>Aspected Magician:</b> Magic 2</div>
-                <div><b>Technomancer:</b> Resonance 1</div>
-            </div>
+            <div class="cell" id="selector">Mundane</div>
             <div class="cell" id="selector">10</div>
             <div class="cell" id="selector">8.000 ¥</div>
 
         </div>
     </div>
+
+
     <div class="side-container">
         <div class="character-info">
             <div class="character-image"></div>
             <div class="character-text"><b>Name: </b><input class="parameter"></div>
             <div class="character-text"><b>Alias: </b><input class="parameter"></div>
-            <div class="character-text">
-                <b>Metatype: </b>
-                <select class="parameter">
-                    <option value="D">Dwarf</option>
-                    <option value="T">Troll</option>
-                    <option value="O">Ork</option>
-                    <option value="E">Elf</option>
-                    <option value="H">Human</option>
-                </select>
-            </div>
-            <div class="character-text"><b>Ethnicity: </b><input class="parameter"></div>
-            <div class="character-text"><b>Age: </b><input class="parameter" type="number"></div>
             <div class="character-text">
                 <b>Sex: </b>
                 <select class="parameter">
@@ -100,10 +86,51 @@
                     <option value="U">Undefined</option>
                 </select>
             </div>
+            <div class="character-text">
+                <b>Metatype: </b>
+                <select class="parameter">
+                    <option value="D">Dwarf</option>
+                    <option value="T">Troll</option>
+                    <option value="O">Ork</option>
+                    <!-- <option value="E">Elf</option>
+                    <option value="H">Human</option> -->
+                </select>
+            </div>
+            <div class="character-text">
+                <b>Nature: </b>
+                <select class="parameter">
+                    <option value="MA">Magician</option>
+                    <option value="AMA">Aspected Magician</option>
+                    <option value="MYAD">Mystic Adept</option>
+                    <option value="AD">Adept</option>
+                    <option value="T">Technomancer</option>
+                   <!--  <option value="M">Mundane</option> -->
+                </select>
+            </div>
+
+            <div class ="spacing">------------------------------------------------</div>
+
+            <div class="character-text"><b>Ethnicity: </b><input class="parameter"></div>
+            <div class="character-text"><b>Age: </b><input class="parameter" type="number"></div>
             <div class="character-text"><b>Height: </b><input class="parameter"></div>
             <div class="character-text"><b>Weight: </b><input class="parameter"></div>
+
+            <div class="spacing">------------------------------------------------</div>
+
             <div class="character-text"><b>Reputation: </b><input class="parameter"></div>
             <div class="character-text"><b>Heat: </b><input class="parameter"></div>
+            <div class="character-text">
+                <b>Lifestyle: </b>
+                <select class="parameter">
+                    <option value="S">Street (Free)</option>
+                    <option value="SQ">Squatter (500¥ / month)</option>
+                    <option value="L">Low (2.000¥ / month)</option>
+                    <option value="M">Middle (5.000¥ / month)</option>
+                    <option value="H">High (10.000¥ / month)</option>
+                    <option value="LU">Luxury (100.000¥ / month)</option>
+                </select>
+            </div>
+            <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" readonly></div>
         </div>
     </div>
 

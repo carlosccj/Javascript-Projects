@@ -1,6 +1,6 @@
 
 const selectorGridDimensions = 5
-const darkGray = "rgb(169, 169, 169)"
+const NoSelected = "rgba(169, 169, 169, 0)"
 const selectorPurple = "rgba(189, 119, 255, 0.718)"
 
 const cellsDoc = document.querySelectorAll('#selector')
@@ -19,44 +19,60 @@ function createGrid() {
                 cellsDoc[cnt].style.backgroundColor = selectorPurple
                 cellsArray[i][j] = true
             }
-            let noSenseVariable = cnt
-            cellsDoc[noSenseVariable].addEventListener('click', () => changeColor(noSenseVariable))
+            let cellSelected = cnt
+            cellsDoc[cellSelected].addEventListener('click', () => changeCell(cellSelected))
             cnt++;
         }
     }
 }
 
-function changeColor(cellSelected) {
-    let rowNumber = Math.floor(cellSelected / selectorGridDimensions)
-    let colNumber = cellSelected % selectorGridDimensions
-    adjustColumn(rowNumber, colNumber, cellSelected)
+function changeCell(cellSelected) {
+    let selectedCellCoordinates = []
+    let displacedCellCoordinates = []
+    const selectedCellRowNumber = Math.floor(cellSelected / selectorGridDimensions)
+    const selectedCellColNumber = cellSelected % selectorGridDimensions
+    selectedCellCoordinates.push(selectedCellRowNumber, selectedCellColNumber)
+    displacedCellCoordinates = changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber)
 }
 
-function adjustColumn(rowNumber, colNumber, cellSelected) {
+function changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber) {
+    let result = []
+    const displacedCellRowNumber = adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected)
+    const displacedCellColNumber = adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber)
+    result.push(displacedCellRowNumber, displacedCellColNumber)
+    return result
+}
+
+function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected) {
     let found = false
+    let result;
     for (let i = 0; i < rows && !false; i++) {
-        if (cellsArray[i][colNumber] == true && i != rowNumber) {
+        if (cellsArray[i][selectedCellColNumber] == true && i != selectedCellRowNumber) {
             found = true
             cellsDoc[cellSelected].style.backgroundColor = selectorPurple
-            cellsArray[rowNumber][colNumber] = true
-            cellsDoc[selectorGridDimensions * i + colNumber].style.backgroundColor = darkGray
-            cellsArray[i][colNumber] = false
-            adjustRow(rowNumber, colNumber, i)
+            cellsArray[selectedCellRowNumber][selectedCellColNumber] = true
+            cellsDoc[selectorGridDimensions * i + selectedCellColNumber].style.backgroundColor = NoSelected
+            cellsArray[i][selectedCellColNumber] = false
+            result = i
         }
     }
+    return result
 }
 
-function adjustRow(rowNumber, colNumber, i) {
+function adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber) {
     let found = false
+    let result
     for (let j = 0; j < cols && !found; j++) {
-        if (cellsArray[rowNumber][j] == true && j != colNumber) {
+        if (cellsArray[selectedCellRowNumber][j] == true && j != selectedCellColNumber) {
             found = true
-            cellsDoc[selectorGridDimensions * rowNumber + j].style.backgroundColor = darkGray
-            cellsArray[rowNumber][j] = false
-            cellsDoc[selectorGridDimensions * i + j].style.backgroundColor = selectorPurple
-            cellsArray[i][j] = true
+            cellsDoc[selectorGridDimensions * selectedCellRowNumber + j].style.backgroundColor = NoSelected
+            cellsArray[selectedCellRowNumber][j] = false
+            cellsDoc[selectorGridDimensions * displacedCellRowNumber + j].style.backgroundColor = selectorPurple
+            cellsArray[displacedCellRowNumber][j] = true
+            result = j
         }
     }
+    return result
 }
 
 function createCellsArray() {

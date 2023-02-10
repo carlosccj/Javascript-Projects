@@ -10,7 +10,7 @@ body {
     position: absolute;
     padding: 10px;
     right: 10px;
-    background-color:darkgray;
+    background-color:rgba(169, 169, 169, 0.75);
     border: solid purple 3px;
     width: 70vw;
     height: 90vh;
@@ -28,8 +28,9 @@ body {
 }
 
 .cell {
-    background-color: none;
+    background-color: transparent;
     display: flex;
+    height: 3rem;
     justify-content: center;
     align-items: center;
     padding: 10px;
@@ -70,48 +71,69 @@ body {
     width: 10vw;
 }
 
+.cell:nth-child(34) {
+    font-weight: bold;
+    display: flex;
+}
+
 .logo {
     background-image: url('Assets/Logo.png');
-    height: 96px;
-    width: 465px;
+    height: 6rem;
+    width: 29rem;
+    margin: auto;
 }
 
 .side-container {
     position: absolute;
     display: inline-block;
     padding: 10px;
-    background-color: darkgray;
+    background-color: rgba(169, 169, 169, 0.75);
     border: solid purple 3px;
     width: 24vw;
     height: 90vh;
 }
 
 .character-info {
-    border: solid purple 1px;
+    /* border: solid purple 1px; */
     padding: 5px;
-    max-height: 80vh;
+    max-height: 89vh;
     max-width: 24vw;
 }
 
 .character-image {
     border: solid purple 3px;
     background-image: url('Assets/default-avatar.jpg');
-    width: 300px;
-    height: 200px;
+    width: 19rem;
+    height: 11.4rem;
     background-size: cover;
     margin: auto;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .character-text {
-    margin-top: 2px;
+    margin-top: 1px;
+    margin-bottom: 1px;
 }
 
-.parameter {
+/* .parameter {
     margin-right: 0px;
-}
+} */
 
 select {
     width: 150px
 }
+
+.spacing {
+    display: inline-block;
+    text-align: center;
+    font-weight: bolder;
+    color: purple;   
+    height: 1px;
+    width: 23vw;
+}
+
+/* .character-info > div:nth-of-type(11) {
+    display: inline-block;
+    height: 1px;
+    width: 23vw;
+} */
