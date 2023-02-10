@@ -8,6 +8,10 @@ const cellsArray = []
 const rows = selectorGridDimensions
 const cols = rows
 
+let selectedCellCoordinates = []
+let displacedCellCoordinates = []
+let metaPoints = 0
+
 createGrid()
 
 function createGrid() {
@@ -27,25 +31,26 @@ function createGrid() {
 }
 
 function changeCell(cellSelected) {
-    let selectedCellCoordinates = []
-    let displacedCellCoordinates = []
     const selectedCellRowNumber = Math.floor(cellSelected / selectorGridDimensions)
     const selectedCellColNumber = cellSelected % selectorGridDimensions
     selectedCellCoordinates.push(selectedCellRowNumber, selectedCellColNumber)
-    displacedCellCoordinates = changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber)
+    changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber)
+    testMetatype(cellSelected)
+    testNature(cellSelected)
+    testNuyen(cellSelected)
+    selectedCellCoordinates.length = 0
+    displacedCellCoordinates.length = 0
 }
 
 function changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber) {
-    let result = []
     const displacedCellRowNumber = adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected)
     const displacedCellColNumber = adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber)
-    result.push(displacedCellRowNumber, displacedCellColNumber)
-    return result
+    displacedCellCoordinates.push(displacedCellRowNumber, displacedCellColNumber)
 }
 
 function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected) {
     let found = false
-    let result;
+    let result
     for (let i = 0; i < rows && !false; i++) {
         if (cellsArray[i][selectedCellColNumber] == true && i != selectedCellRowNumber) {
             found = true
@@ -73,6 +78,42 @@ function adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRo
         }
     }
     return result
+}
+
+function testMetatype(cellSelected) {
+    if (selectedCellCoordinates[1] == 0 || displacedCellCoordinates[1] == 0) {
+        let regex = /\d+/
+        let raceCell
+        let cellStr = ""
+        let raceSelectorDoc = document.getElementById('race')
+        
+        if (selectedCellCoordinates[1] == 0) raceCell = selectedCellCoordinates[0]
+        else if (displacedCellCoordinates[1] == 0) raceCell = displacedCellCoordinates[0]
+        cellStr = cellsDoc[cellSelected].innerHTML
+        metaPoints = parseInt(cellStr.match(regex))
+
+        if ((raceCell == 0 || raceCell == 1) && raceSelectorDoc.options.length > 3) {
+            raceSelectorDoc.remove(4)
+            raceSelectorDoc.remove(3)
+        } else if ((raceCell == 2 || raceCell == 3 || raceCell == 4) && raceSelectorDoc.options.length < 5) {
+            let optionHuman = document.createElement('option')
+            optionHuman.text = "Human"
+            optionHuman.value = "H"
+            let optionElf = document.createElement('option')
+            optionElf.text = "Elf"
+            optionElf.value = "E"
+            raceSelectorDoc.add(optionHuman)
+            raceSelectorDoc.add(optionElf)
+        }
+    }
+}
+
+function testNature(cellSelected) {
+
+}
+
+function testNuyen(cellSelected) {
+
 }
 
 function createCellsArray() {
