@@ -6,10 +6,15 @@ const selectorPurple = "rgba(189, 119, 255, 0.718)"
 const cellsDoc = document.querySelectorAll('#selector')
 const cellsArray = []
 const rows = selectorGridDimensions
-const cols = rows
+const cols = selectorGridDimensions
+
+let metatype = 'D'
+let nature = "MAG"
 
 let selectedCellCoordinates = []
-let metaPoints = 0
+let metaPoints = 13
+let magicAndResonancePoints = 2
+let nuyen = 8000
 
 createGrid()
 
@@ -41,12 +46,14 @@ function changeCell(cellSelected) {
 }
 
 function changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber) {
-    adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected)
+    const displacedCellRowNumber = adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected)
+    adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber)
+
 }
 
 function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected) {
     let found = false
-    let result
+    let result = 0
     for (let i = 0; i < rows && !false; i++) {
         if (cellsArray[i][selectedCellColNumber] == true && i != selectedCellRowNumber) {
             found = true
@@ -57,7 +64,7 @@ function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected
             result = i
         }
     }
-    adjustRow(selectedCellRowNumber, selectedCellColNumber, result)
+    return result
 }
 
 function adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber) {
@@ -77,46 +84,116 @@ function adjustMetatype() {
     const metatypeColumn = 0
     const metatypeRow = getRow(metatypeColumn)
     const metatypeCell = selectorGridDimensions * metatypeRow + metatypeColumn
+    changeMetatypeOptionMenu(metatypeRow)
+    setMetatype()
     setMetaPoints(metatypeCell)
-    changeMetatypeOption(metatypeRow)
 }
 
-function setMetaPoints(metatypeCell) {
-    const regex = /\d+/
-    let cellText = cellsDoc[metatypeCell].innerHTML
-    metaPoints = parseInt(cellText.match(regex))
-}
-
-function changeMetatypeOption(metatypeRow) {
-    let raceSelectorDoc = document.getElementById('race')
-    if ((metatypeRow == 0 || metatypeRow == 1) && raceSelectorDoc.options.length > 3) {
-        raceSelectorDoc.remove(4)
-        raceSelectorDoc.remove(3)
-    } else if ((metatypeRow == 2 || metatypeRow == 3 || metatypeRow == 4) && raceSelectorDoc.options.length < 5) {
+function changeMetatypeOptionMenu(metatypeRow) {
+    let metatypeSelectorDoc = document.getElementById('race')
+    if ((metatypeRow == 0 || metatypeRow == 1) && metatypeSelectorDoc.options.length > 3) {
+        metatypeSelectorDoc.remove(4)
+        metatypeSelectorDoc.remove(3)
+    } else if ((metatypeRow == 2 || metatypeRow == 3 || metatypeRow == 4) && metatypeSelectorDoc.options.length < 5) {
         let optionHuman = document.createElement('option')
         optionHuman.text = "Human"
         optionHuman.value = "H"
         let optionElf = document.createElement('option')
         optionElf.text = "Elf"
         optionElf.value = "E"
-        raceSelectorDoc.add(optionHuman)
-        raceSelectorDoc.add(optionElf)
+        metatypeSelectorDoc.add(optionHuman)
+        metatypeSelectorDoc.add(optionElf)
     }
 }
 
-function adjustNature() {
+function setMetatype() {
+    const metatypeSelectorDoc = document.getElementById('race')
+    metatype = metatypeSelectorDoc.value
+}
 
+function setMetaPoints(metatypeCell) {
+    const regex = /\d+/
+    const cellText = cellsDoc[metatypeCell].innerHTML
+    metaPoints = parseInt(cellText.match(regex))
+}
+
+function adjustNature() {
+    const natureColumn = 2
+    const natureRow = getRow(natureColumn)
+    const natureCell = selectorGridDimensions * natureRow + natureColumn
+    changeNatureOption(natureRow)
+    setNature()
+    setMagicAndResonancePoints(natureCell)
+}
+
+function changeNatureOption(natureRow) {
+    let natureSelectorDoc = document.getElementById('nature')
+    if (natureRow == 4) {
+        natureSelectorDoc.remove(4)
+        natureSelectorDoc.remove(3)
+        natureSelectorDoc.remove(2)
+        natureSelectorDoc.remove(1)
+        natureSelectorDoc.remove(0)
+        let optionMundane = document.createElement('option')
+        optionMundane.text = "Mundane"
+        optionMundane.value = "MUN"
+        natureSelectorDoc.add(optionMundane)
+    } else if ((natureRow == 4 || natureRow == 3 || natureRow == 2 || natureRow == 1 || natureRow == 0) 
+    && natureSelectorDoc.options.length < 5) {
+        natureSelectorDoc.remove(0)
+        let optionMagician = document.createElement('option')
+        optionMagician.text = "Magician"
+        optionMagician.value = "MAG"
+        natureSelectorDoc.add(optionMagician)
+        let optionAspectedMagician = document.createElement('option')
+        optionAspectedMagician.text = "Aspected Magician"
+        optionAspectedMagician.value = "AMAG"
+        natureSelectorDoc.add(optionAspectedMagician)
+        let optionMysticAdept = document.createElement('option')
+        optionMysticAdept.text = "Mystic Adept"
+        optionMysticAdept.value = "MYAD"
+        natureSelectorDoc.add(optionMysticAdept)
+        let optionAdept = document.createElement('option')
+        optionAdept.text = "Adept"
+        optionAdept.value = "AD"
+        natureSelectorDoc.add(optionAdept)
+        let optionTechnomancer = document.createElement('option')
+        optionTechnomancer.text = "Technomancer"
+        optionTechnomancer.value = "T"
+        natureSelectorDoc.add(optionTechnomancer)
+    }
+}
+
+function setNature() {
+    const natureSelectorDoc = document.getElementById('nature')
+    nature = natureSelectorDoc.value
+}
+
+function setMagicAndResonancePoints(natureCell) {
+    if (nature != "MUN") {
+        const regex = /\d+/
+        const cellText = cellsDoc[natureCell].innerHTML
+        magicAndResonancePoints = parseInt(cellText.match(regex))
+        if (nature == "AMAG") magicAndResonancePoints += 1
+    } else {
+        magicAndResonancePoints = 0
+    }
 }
 
 function adjustNuyen() {
-
+    const nuyenColumn = 4
+    const nuyenRow = getRow(nuyenColumn)
+    const nuyenCell = selectorGridDimensions * nuyenRow + nuyenColumn
+    const regex = /\d+/
+    const cellText = cellsDoc[nuyenCell].innerHTML
+    nuyen = parseInt(cellText.match(regex)) * 1000
 }
 
-function getRow(metatypeColumn) {
+function getRow(column) {
     let found = false
     let row = 0 
     for (let i = 0; row < selectorGridDimensions && !found; i++) {
-        if (cellsArray[i][metatypeColumn] == true) {
+        if (cellsArray[i][column] == true) {
             row = i
             found = true
         }
