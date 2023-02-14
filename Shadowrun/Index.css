@@ -27,6 +27,13 @@ body {
     
 }
 
+.logo {
+    background-image: url('Assets/Logo.png');
+    height: 6rem;
+    width: 29rem;
+    margin-left: 5px;
+}
+
 .cell {
     background-color: transparent;
     display: flex;
@@ -74,13 +81,6 @@ body {
 .cell:nth-child(34) {
     font-weight: bold;
     display: flex;
-}
-
-.logo {
-    background-image: url('Assets/Logo.png');
-    height: 6rem;
-    width: 29rem;
-    margin: auto;
 }
 
 .side-container {

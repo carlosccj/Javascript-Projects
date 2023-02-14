@@ -11,6 +11,8 @@ const cols = selectorGridDimensions
 let metatype = 'D'
 let nature = "MAG"
 
+let selectedCellRowNumber = 0
+let selectedCellColNumber = 0
 let selectedCellCoordinates = []
 let metaPoints = 13
 let magicAndResonancePoints = 2
@@ -28,30 +30,35 @@ function createGrid() {
                 cellsArray[i][j] = true
             }
             let cellSelected = cnt
-            cellsDoc[cellSelected].addEventListener('click', () => changeCell(cellSelected))
+            cellsDoc[cellSelected].addEventListener('click', () => changeCellColor(cellSelected))
+            cellsDoc[cellSelected].addEventListener('click', () => adjustCharacter())
             cnt++;
         }
     }
 }
 
-function changeCell(cellSelected) {
-    const selectedCellRowNumber = Math.floor(cellSelected / selectorGridDimensions)
-    const selectedCellColNumber = cellSelected % selectorGridDimensions
+function changeCellColor(cellSelected) {
+    selectedCellCoordinates.length = 0
+    selectedCellRowNumber = Math.floor(cellSelected / selectorGridDimensions)
+    selectedCellColNumber = cellSelected % selectorGridDimensions
     selectedCellCoordinates.push(selectedCellRowNumber, selectedCellColNumber)
-    changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber)
+    const displacedCellRowNumber = adjustColumn(cellSelected)
+    adjustRow(displacedCellRowNumber)
+}
+
+function adjustCharacter() {
     adjustMetatype()
     adjustNature()
     adjustNuyen()
-    selectedCellCoordinates.length = 0
+    
+    console.log("Metatype: " + metatype + "\n" + 
+    "Metapoints: " + metaPoints + "\n" + 
+    "Nature: " + nature + "\n" + 
+    "Magic/Resonance: " + magicAndResonancePoints + "\n" + 
+    "Nuyen: " + nuyen) 
 }
 
-function changeColor(cellSelected, selectedCellRowNumber, selectedCellColNumber) {
-    const displacedCellRowNumber = adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected)
-    adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber)
-
-}
-
-function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected) {
+function adjustColumn(cellSelected) {
     let found = false
     let result = 0
     for (let i = 0; i < rows && !false; i++) {
@@ -67,7 +74,7 @@ function adjustColumn(selectedCellRowNumber, selectedCellColNumber, cellSelected
     return result
 }
 
-function adjustRow(selectedCellRowNumber, selectedCellColNumber, displacedCellRowNumber) {
+function adjustRow(displacedCellRowNumber) {
     let found = false
     for (let j = 0; j < cols && !found; j++) {
         if (cellsArray[selectedCellRowNumber][j] == true && j != selectedCellColNumber) {
@@ -121,12 +128,12 @@ function adjustNature() {
     const natureColumn = 2
     const natureRow = getRow(natureColumn)
     const natureCell = selectorGridDimensions * natureRow + natureColumn
-    changeNatureOption(natureRow)
+    changeNatureOptionMenu(natureRow)
     setNature()
     setMagicAndResonancePoints(natureCell)
 }
 
-function changeNatureOption(natureRow) {
+function changeNatureOptionMenu(natureRow) {
     let natureSelectorDoc = document.getElementById('nature')
     if (natureRow == 4) {
         natureSelectorDoc.remove(4)
