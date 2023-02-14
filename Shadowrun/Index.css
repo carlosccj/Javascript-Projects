@@ -11,9 +11,45 @@ body {
     padding: 10px;
     right: 10px;
     background-color:rgba(169, 169, 169, 0.75);
-    border: solid purple 3px;
+    border: solid rgb(128, 0, 128) 3px;
     width: 70vw;
     height: 90vh;
+}
+
+.logo {
+    display: inline-block;
+    background-image: url('Assets/Logo.png');
+    height: 6rem;
+    width: 29rem;
+    margin-left: 5px;
+}
+
+button {
+    font-weight: bolder;
+    font-size: large;
+    padding: 10px;
+    width: 6.5rem;
+    margin-left: 1.5rem;
+    background-color: rgba(169, 169, 169, 0.75);
+    border: 2px solid black;
+    border-radius: 10%;
+}
+
+button:hover {
+    background-color: rgba(189, 119, 255, 0.718);
+    transition: 0.5s;
+}
+
+button:active {
+    background-color: rgb(128, 0, 128);
+    transition: 0.5s;
+}
+
+.buttons {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5.5rem;
+    margin-top: 3.5rem;
 }
 
 .grid {
@@ -27,15 +63,9 @@ body {
     
 }
 
-.logo {
-    background-image: url('Assets/Logo.png');
-    height: 6rem;
-    width: 29rem;
-    margin-left: 5px;
-}
-
 .cell {
     background-color: transparent;
+    transition: 0.5s;
     display: flex;
     height: 3rem;
     justify-content: center;
@@ -46,6 +76,11 @@ body {
     white-space: wrap;
 }
 
+/* .cell:active {
+    background-color: rgb(128, 0, 128);
+    transition: 0.5s;
+}
+ */
 .cell:nth-child(-n+6) {
     font-weight: bolder;
     font-size: 1.1rem;
@@ -88,20 +123,20 @@ body {
     display: inline-block;
     padding: 10px;
     background-color: rgba(169, 169, 169, 0.75);
-    border: solid purple 3px;
+    border: solid rgb(128, 0, 128) 3px;
     width: 24vw;
     height: 90vh;
 }
 
 .character-info {
-    /* border: solid purple 1px; */
+    /* border: solid rgb(128, 0, 128) 1px; */
     padding: 5px;
     max-height: 89vh;
     max-width: 24vw;
 }
 
 .character-image {
-    border: solid purple 3px;
+    border: solid rgb(128, 0, 128) 3px;
     background-image: url('Assets/default-avatar.jpg');
     width: 19rem;
     height: 11.4rem;
@@ -127,7 +162,7 @@ select {
     display: inline-block;
     text-align: center;
     font-weight: bolder;
-    color: purple;   
+    color: rgb(128, 0, 128);   
     height: 1px;
     width: 23vw;
 }

@@ -46,18 +46,6 @@ function changeCellColor(cellSelected) {
     adjustRow(displacedCellRowNumber)
 }
 
-function adjustCharacter() {
-    adjustMetatype()
-    adjustNature()
-    adjustNuyen()
-    
-    console.log("Metatype: " + metatype + "\n" + 
-    "Metapoints: " + metaPoints + "\n" + 
-    "Nature: " + nature + "\n" + 
-    "Magic/Resonance: " + magicAndResonancePoints + "\n" + 
-    "Nuyen: " + nuyen) 
-}
-
 function adjustColumn(cellSelected) {
     let found = false
     let result = 0
@@ -87,16 +75,33 @@ function adjustRow(displacedCellRowNumber) {
     }
 }
 
+function adjustCharacter() {
+    /* adjustMetatype()
+    adjustNature()
+    adjustNuyen() */
+
+    changeMetatypeOptionMenu()
+    changeNatureOptionMenu()
+    
+    console.log("Metatype: " + metatype + "\n" + 
+    "Metapoints: " + metaPoints + "\n" + 
+    "Nature: " + nature + "\n" + 
+    "Magic/Resonance: " + magicAndResonancePoints + "\n" + 
+    "Nuyen: " + nuyen) 
+}
+
 function adjustMetatype() {
-    const metatypeColumn = 0
+    /* const metatypeColumn = 0
     const metatypeRow = getRow(metatypeColumn)
     const metatypeCell = selectorGridDimensions * metatypeRow + metatypeColumn
-    changeMetatypeOptionMenu(metatypeRow)
+    changeMetatypeOptionMenu(metatypeRow) */
     setMetatype()
     setMetaPoints(metatypeCell)
 }
 
-function changeMetatypeOptionMenu(metatypeRow) {
+function changeMetatypeOptionMenu() {
+    const metatypeColumn = 0
+    const metatypeRow = getRow(metatypeColumn)
     let metatypeSelectorDoc = document.getElementById('race')
     if ((metatypeRow == 0 || metatypeRow == 1) && metatypeSelectorDoc.options.length > 3) {
         metatypeSelectorDoc.remove(4)
@@ -125,15 +130,17 @@ function setMetaPoints(metatypeCell) {
 }
 
 function adjustNature() {
-    const natureColumn = 2
+    /* const natureColumn = 2
     const natureRow = getRow(natureColumn)
     const natureCell = selectorGridDimensions * natureRow + natureColumn
-    changeNatureOptionMenu(natureRow)
+    changeNatureOptionMenu(natureRow) */
     setNature()
     setMagicAndResonancePoints(natureCell)
 }
 
-function changeNatureOptionMenu(natureRow) {
+function changeNatureOptionMenu() {
+    const natureColumn = 2
+    const natureRow = getRow(natureColumn)
     let natureSelectorDoc = document.getElementById('nature')
     if (natureRow == 4) {
         natureSelectorDoc.remove(4)
