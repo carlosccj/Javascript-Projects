@@ -21,14 +21,14 @@ let magicAndResonancePoints = 2
 let numberSkills = 16
 let resources = 8000
 
-let charName = document.getElementById('char-name').value
-let alias = document.getElementById('char-alias').value
-let sex = document.getElementById('char-sex').options[document.getElementById('char-sex').selectedIndex].value
-let ethnicity = document.getElementById('char-ethnicity').value
-let age = document.getElementById('char-age').value
-let height = document.getElementById('char-height').value
-let weight = document.getElementById('char-weight').value
-let lifestyle = document.getElementById('char-lifestyle').options[document.getElementById('char-lifestyle').selectedIndex].value
+let charName = ""
+let alias = ""
+let sex = ""
+let ethnicity = ""
+let age = 0
+let height = 0
+let weight = 0
+let lifestyle = ""
 
 let selectedCellRowNumber = 0
 let selectedCellColNumber = 0
@@ -98,6 +98,42 @@ function setResources(resourcesCell) {
     resources = parseInt(cellText.match(regex)) * 1000
 }
 
+function setCharName() {
+    charName = document.getElementById('char-name').value
+}
+
+function setAlias() {
+    alias = document.getElementById('char-alias').value
+}
+
+function setSex() {
+    const sexSelectorDoc = document.getElementById('char-sex')
+    const sexSelected = sexSelectorDoc.selectedIndex
+    sex = sexSelectorDoc.options[sexSelected].value
+}
+
+function setEthnicity() {
+    ethnicity = document.getElementById('char-ethnicity').value
+}
+
+function setAge() {
+    age = document.getElementById('char-age').value
+}
+
+function setHeight() {
+    height = document.getElementById('char-height').value
+}
+
+function setWeight() {
+    weight = document.getElementById('char-weight').value
+}
+
+function setLifestyle() {
+    const lifestyleSelectorDoc = document.getElementById('char-lifestyle')
+    const lifestyleSelected = lifestyleSelectorDoc.selectedIndex
+    lifestyle = lifestyleSelectorDoc.options[lifestyleSelected].value
+}
+
 function previousScreen() {
     //It should link to the Main Menu here (no need to save any data at this point)
 }
@@ -115,12 +151,20 @@ function saveData() {
     setMagicAndResonancePoints(natureCell)
     setNumberSkills(numberSkillsCell)
     setResources(resourcesCell)
+    setCharName()
+    setAlias()
+    setSex()
+    setEthnicity()
+    setAge()
+    setHeight()
+    setWeight()
+    setLifestyle()
 }
 
 function setDataAndNext() {
     saveData()
 
-    console.log("Metatype: " + metatype + "\n" + 
+    console.log("Metatype: " + getMetatype() + "\n" + 
     "Metapoints: " + metaPoints + "\n" +
     "Attributes: " + numberAttributes + "\n" + 
     "Nature: " + nature + "\n" + 
