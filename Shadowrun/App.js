@@ -7,16 +7,32 @@ const cellsDoc = document.querySelectorAll('#selector')
 const cellsArray = []
 const rows = selectorGridDimensions
 const cols = selectorGridDimensions
+const metatypeColumn = 0
+const numberAttributesColumn = 1
+const natureColumn = 2
+const numberSkillsColumn = 3
+const resourcesColumn = 4
 
 let metatype = 'D'
+let metaPoints = 13
+let numberAttributes = 16
 let nature = "MAG"
+let magicAndResonancePoints = 2
+let numberSkills = 16
+let resources = 8000
+
+let charName = document.getElementById('char-name').value
+let alias = document.getElementById('char-alias').value
+let sex = document.getElementById('char-sex').options[document.getElementById('char-sex').selectedIndex].value
+let ethnicity = document.getElementById('char-ethnicity').value
+let age = document.getElementById('char-age').value
+let height = document.getElementById('char-height').value
+let weight = document.getElementById('char-weight').value
+let lifestyle = document.getElementById('char-lifestyle').options[document.getElementById('char-lifestyle').selectedIndex].value
 
 let selectedCellRowNumber = 0
 let selectedCellColNumber = 0
 let selectedCellCoordinates = []
-let metaPoints = 13
-let magicAndResonancePoints = 2
-let nuyen = 8000
 
 createGrid()
 
@@ -31,10 +47,97 @@ function createGrid() {
             }
             let cellSelected = cnt
             cellsDoc[cellSelected].addEventListener('click', () => changeCellColor(cellSelected))
-            cellsDoc[cellSelected].addEventListener('click', () => adjustCharacter())
+            cellsDoc[cellSelected].addEventListener('click', () => adjustCharacterOptions())
             cnt++;
         }
     }
+}
+
+function setMetatype() {
+    const metatypeSelectorDoc = document.getElementById('char-metatype')
+    metatype = metatypeSelectorDoc.value
+}
+
+function setMetaPoints(metatypeCell) {
+    const regex = /\d+/
+    const cellText = cellsDoc[metatypeCell].innerHTML
+    metaPoints = parseInt(cellText.match(regex))
+}
+
+function setNumberAttributes(numberAttributesCell) {
+    const regex = /\d+/
+    const cellText = cellsDoc[numberAttributesCell].innerHTML
+    numberAttributes = parseInt(cellText.match(regex))
+}
+
+function setNature() {
+    const natureSelectorDoc = document.getElementById('char-nature')
+    nature = natureSelectorDoc.value
+}
+
+function setMagicAndResonancePoints(natureCell) {
+    if (nature != "MUN") {
+        const regex = /\d+/
+        const cellText = cellsDoc[natureCell].innerHTML
+        magicAndResonancePoints = parseInt(cellText.match(regex))
+        if (nature == "AMAG") magicAndResonancePoints += 1
+    } else {
+        magicAndResonancePoints = 0
+    }
+}
+
+function setNumberSkills(numberSkillsCell) {
+    const regex = /\d+/
+    const cellText = cellsDoc[numberSkillsCell].innerHTML
+    numberSkills = parseInt(cellText.match(regex))
+}
+
+function setResources(resourcesCell) {
+    const regex = /\d+/
+    const cellText = cellsDoc[resourcesCell].innerHTML
+    resources = parseInt(cellText.match(regex)) * 1000
+}
+
+function previousScreen() {
+    //It should link to the Main Menu here (no need to save any data at this point)
+}
+
+function saveData() {
+    const metatypeCell = getCell(metatypeColumn)
+    const numberAttributesCell = getCell(numberAttributesColumn)
+    const natureCell = getCell(natureColumn)
+    const numberSkillsCell = getCell(numberSkillsColumn)
+    const resourcesCell = getCell(resourcesColumn)
+    setMetatype()
+    setMetaPoints(metatypeCell)
+    setNumberAttributes(numberAttributesCell)
+    setNature()
+    setMagicAndResonancePoints(natureCell)
+    setNumberSkills(numberSkillsCell)
+    setResources(resourcesCell)
+}
+
+function setDataAndNext() {
+    saveData()
+
+    console.log("Metatype: " + metatype + "\n" + 
+    "Metapoints: " + metaPoints + "\n" +
+    "Attributes: " + numberAttributes + "\n" + 
+    "Nature: " + nature + "\n" + 
+    "Magic/Resonance: " + magicAndResonancePoints + "\n" + 
+    "Skills: " + numberSkills + "\n" +
+    "resources: " + resources)
+
+    console.log("Name: " + charName + "\n" + 
+    "Alias: " + alias + "\n" + 
+    "Sex: " + sex + "\n" + 
+    "Ethnicity: " + ethnicity + "\n" + 
+    "Age: " + age + "\n" + 
+    "Height: " + height + "\n" + 
+    "Weight: " + weight + "\n" + 
+    "Lifestyle: " + lifestyle + "\n")
+
+    //It should load the next HTML page here
 }
 
 function changeCellColor(cellSelected) {
@@ -75,34 +178,15 @@ function adjustRow(displacedCellRowNumber) {
     }
 }
 
-function adjustCharacter() {
-    /* adjustMetatype()
-    adjustNature()
-    adjustNuyen() */
-
+function adjustCharacterOptions() {
     changeMetatypeOptionMenu()
     changeNatureOptionMenu()
-    
-    console.log("Metatype: " + metatype + "\n" + 
-    "Metapoints: " + metaPoints + "\n" + 
-    "Nature: " + nature + "\n" + 
-    "Magic/Resonance: " + magicAndResonancePoints + "\n" + 
-    "Nuyen: " + nuyen) 
-}
-
-function adjustMetatype() {
-    /* const metatypeColumn = 0
-    const metatypeRow = getRow(metatypeColumn)
-    const metatypeCell = selectorGridDimensions * metatypeRow + metatypeColumn
-    changeMetatypeOptionMenu(metatypeRow) */
-    setMetatype()
-    setMetaPoints(metatypeCell)
+    changeResourcesOptionMenu()
 }
 
 function changeMetatypeOptionMenu() {
-    const metatypeColumn = 0
     const metatypeRow = getRow(metatypeColumn)
-    let metatypeSelectorDoc = document.getElementById('race')
+    let metatypeSelectorDoc = document.getElementById('char-metatype')
     if ((metatypeRow == 0 || metatypeRow == 1) && metatypeSelectorDoc.options.length > 3) {
         metatypeSelectorDoc.remove(4)
         metatypeSelectorDoc.remove(3)
@@ -118,30 +202,9 @@ function changeMetatypeOptionMenu() {
     }
 }
 
-function setMetatype() {
-    const metatypeSelectorDoc = document.getElementById('race')
-    metatype = metatypeSelectorDoc.value
-}
-
-function setMetaPoints(metatypeCell) {
-    const regex = /\d+/
-    const cellText = cellsDoc[metatypeCell].innerHTML
-    metaPoints = parseInt(cellText.match(regex))
-}
-
-function adjustNature() {
-    /* const natureColumn = 2
-    const natureRow = getRow(natureColumn)
-    const natureCell = selectorGridDimensions * natureRow + natureColumn
-    changeNatureOptionMenu(natureRow) */
-    setNature()
-    setMagicAndResonancePoints(natureCell)
-}
-
 function changeNatureOptionMenu() {
-    const natureColumn = 2
     const natureRow = getRow(natureColumn)
-    let natureSelectorDoc = document.getElementById('nature')
+    let natureSelectorDoc = document.getElementById('char-nature')
     if (natureRow == 4) {
         natureSelectorDoc.remove(4)
         natureSelectorDoc.remove(3)
@@ -178,29 +241,19 @@ function changeNatureOptionMenu() {
     }
 }
 
-function setNature() {
-    const natureSelectorDoc = document.getElementById('nature')
-    nature = natureSelectorDoc.value
+function changeResourcesOptionMenu() {
+    let resourceSelectorDoc = document.getElementById('nuyen')
+    const resourcesRow = getRow(resourcesColumn)
+    if (resourcesRow == 0) resourceSelectorDoc.value = "450.000"
+    else if (resourcesRow == 1) resourceSelectorDoc.value = "275.000"
+    else if (resourcesRow == 2) resourceSelectorDoc.value = "150.000"
+    else if (resourcesRow == 3) resourceSelectorDoc.value = "50.000"
+    else if (resourcesRow == 4) resourceSelectorDoc.value = "8.000"
 }
 
-function setMagicAndResonancePoints(natureCell) {
-    if (nature != "MUN") {
-        const regex = /\d+/
-        const cellText = cellsDoc[natureCell].innerHTML
-        magicAndResonancePoints = parseInt(cellText.match(regex))
-        if (nature == "AMAG") magicAndResonancePoints += 1
-    } else {
-        magicAndResonancePoints = 0
-    }
-}
-
-function adjustNuyen() {
-    const nuyenColumn = 4
-    const nuyenRow = getRow(nuyenColumn)
-    const nuyenCell = selectorGridDimensions * nuyenRow + nuyenColumn
-    const regex = /\d+/
-    const cellText = cellsDoc[nuyenCell].innerHTML
-    nuyen = parseInt(cellText.match(regex)) * 1000
+function getCell(cellColumn) {
+    const cellRow = getRow(cellColumn)
+    return selectorGridDimensions * cellRow + cellColumn
 }
 
 function getRow(column) {

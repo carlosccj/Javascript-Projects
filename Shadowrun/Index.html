@@ -83,11 +83,11 @@
     <div class="side-container">
         <div class="character-info">
             <div class="character-image"></div>
-            <div class="character-text"><b>Name: </b><input class="parameter"></div>
-            <div class="character-text"><b>Alias: </b><input class="parameter"></div>
+            <div class="character-text"><b>Name: </b><input class="parameter" id="char-name"></div>
+            <div class="character-text"><b>Alias: </b><input class="parameter" id="char-alias"></div>
             <div class="character-text">
                 <b>Sex: </b>
-                <select class="parameter">
+                <select class="parameter" id="char-sex">
                     <option value="M">Male</option>
                     <option value="F">Female</option>
                     <option value="U">Undefined</option>
@@ -95,7 +95,7 @@
             </div>
             <div class="character-text">
                 <b>Metatype: </b>
-                <select class="parameter" id="race">
+                <select class="parameter" id="char-metatype">
                     <option value="D">Dwarf</option>
                     <option value="T">Troll</option>
                     <option value="O">Ork</option>
@@ -103,7 +103,7 @@
             </div>
             <div class="character-text">
                 <b>Nature: </b>
-                <select class="parameter" id="nature">
+                <select class="parameter" id="char-nature">
                     <option value="MAG">Magician</option>
                     <option value="AMAG">Aspected Magician</option>
                     <option value="MYAD">Mystic Adept</option>
@@ -114,10 +114,10 @@
 
             <div class ="spacing">------------------------------------------------</div>
 
-            <div class="character-text"><b>Ethnicity: </b><input class="parameter"></div>
-            <div class="character-text"><b>Age: </b><input class="parameter" type="number"></div>
-            <div class="character-text"><b>Height: </b><input class="parameter"></div>
-            <div class="character-text"><b>Weight: </b><input class="parameter"></div>
+            <div class="character-text"><b>Ethnicity: </b><input class="parameter" id="char-ethnicity"></div>
+            <div class="character-text"><b>Age: </b><input class="parameter" id="char-age" type="number" value="25"></div>
+            <div class="character-text"><b>Height (cm): </b><input class="parameter" id="char-height" value="180"></div>
+            <div class="character-text"><b>Weight (kg): </b><input class="parameter" id="char-weight" value="80"></div>
 
             <div class="spacing">------------------------------------------------</div>
 
@@ -125,7 +125,7 @@
             <div class="character-text"><b>Heat: </b><input class="parameter" readonly></div>
             <div class="character-text">
                 <b>Lifestyle: </b>
-                <select class="parameter">
+                <select class="parameter" id="char-lifestyle">
                     <option value="S">Street (Free)</option>
                     <option value="SQ">Squatter (500¥ / month)</option>
                     <option value="L">Low (2.000¥ / month)</option>
@@ -134,10 +134,10 @@
                     <option value="LU">Luxury (100.000¥ / month)</option>
                 </select>
             </div>
-            <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" readonly></div>
+            <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" id="nuyen" value="8.000" readonly></div>
         </div>
     </div>
 
-    <script src="App.js" type="module"></script>
+    <script src="App.js"></script>
 </body>
 </html>
