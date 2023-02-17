@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+
+body {
+    font-family: 'Chakra Petch', sans-serif;
+    background-image: url('Assets/Background.jpg');
+    background-size: 100vw 100vh;
+}
+
+.main-container {
+    position: absolute;
+    padding: 10px;
+    right: 10px;
+    background-color:rgba(169, 169, 169, 0.75);
+    border: solid rgb(128, 0, 128) 3px;
+    width: 70vw;
+    height: 90vh;
+}
+
+.logo {
+    display: inline-block;
+    background-image: url('Assets/Logo.png');
+    height: 6rem;
+    width: 29rem;
+    margin-left: 5px;
+}
+
+button {
+    font-weight: bolder;
+    font-size: large;
+    padding: 10px;
+    width: 6.5rem;
+    margin-left: 1.5rem;
+    background-color: rgba(169, 169, 169, 0.75);
+    border: 2px solid black;
+    border-radius: 10%;
+}
+
+button:hover {
+    background-color: rgba(189, 119, 255, 0.718);
+    transition: 0.5s;
+}
+
+button:active {
+    background-color: rgb(128, 0, 128);
+    transition: 0.5s;
+}
+
+.buttons {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5.5rem;
+    margin-top: 3.5rem;
+}
+
+.grid {
+    display: grid;
+    border: black 2px solid;
+    max-width: 69vw;
+    max-height: 73vh;
+    margin: 5px;
+    margin-top: 25px;
+    grid-template-columns: repeat(6, 1fr);
+    
+}
+
+.cell {
+    background-color: transparent;
+    transition: 0.5s;
+    display: flex;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: black 1px solid;
+    font-size: 0.9rem;
+    white-space: wrap;
+}
+
+/* .cell:active {
+    background-color: rgb(128, 0, 128);
+    transition: 0.5s;
+}
+ */
+.cell:nth-child(-n+6) {
+    font-weight: bolder;
+    font-size: 1.1rem;
+    border-bottom: 2px solid black;
+    background-color: rgb(168, 69, 211);
+}
+
+.cell:nth-child(6n+1) {
+    width: 7vw;
+    font-weight: bolder;
+    border-right: 2px solid black;
+    background-color: rgb(168, 69, 211);
+}
+
+.cell:nth-child(6n+7) {
+    font-size: 1.5rem;
+}
+
+.cell:nth-child(6n+2) {
+    text-align: center;
+    width: 12vw;
+}
+
+.cell:nth-child(6n+10) {
+    display: table-cell;
+    min-width: 21vw;
+}
+
+.cell:nth-child(6n+6) {
+    width: 10vw;
+}
+
+.cell:nth-child(34) {
+    font-weight: bold;
+    display: flex;
+}
+
+.side-container {
+    position: absolute;
+    display: inline-block;
+    padding: 10px;
+    background-color: rgba(169, 169, 169, 0.75);
+    border: solid rgb(128, 0, 128) 3px;
+    width: 24vw;
+    height: 90vh;
+}
+
+.character-info {
+    /* border: solid rgb(128, 0, 128) 1px; */
+    padding: 5px;
+    max-height: 89vh;
+    max-width: 24vw;
+}
+
+.character-image {
+    border: solid rgb(128, 0, 128) 3px;
+    background-image: url('Assets/default-avatar.jpg');
+    width: 19rem;
+    height: 11.4rem;
+    background-size: cover;
+    margin: auto;
+    margin-bottom: 15px;
+}
+
+.character-text {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+/* .parameter {
+    margin-right: 0px;
+} */
+
+select {
+    width: 150px
+}
+
+.spacing {
+    display: inline-block;
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(128, 0, 128);   
+    height: 1px;
+    width: 23vw;
+}
+
+/* .character-info > div:nth-of-type(11) {
+    display: inline-block;
+    height: 1px;
+    width: 23vw;
+} */

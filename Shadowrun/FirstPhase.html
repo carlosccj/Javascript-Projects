@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="FirstPhase.css">
+    <title>FirstPhase</title>
+</head>
+<body>
+    <div class="main-container">
+        
+        <div class="logo"></div>
+        <div class="buttons">
+            <button onclick="previousScreen()">PREV</button>
+            <button onclick="saveData()">SAVE</button>
+            <button onclick="setDataAndNext()">NEXT</button>
+        </div>
+        
+        <div class="grid">
+            <div class="cell" id="priority">Priority</div>
+            <div class="cell" id="metatype">Metatype</div>
+            <div class="cell" id="attribute">Attributes</div>
+            <div class="cell" id="magic-resonance">Magic / Resonance</div>
+            <div class="cell" id="skills">Skills</div>
+            <div class="cell" id="resources">Resources</div>
+
+            <div class="cell" id="a">A</div>
+            <div class="cell" id="selector">Dwarf, Ork, Troll (13)</div>
+            <div class="cell" id="selector">24</div>
+            <div class="cell" id="selector">
+                <div><b>Magician, Mystic Adept, Adept:</b> Magic 4</div>
+                <div><b>Aspected Magician:</b> Magic 5</div>
+                <div><b>Technomancer:</b> Resonance 4</div>
+            </div>
+            <div class="cell" id="selector">32</div>
+            <div class="cell" id="selector">450.000 ¥</div>
+
+            <div class="cell" id="b">B</div>
+            <div class="cell" id="selector">Dwarf, Ork, Troll (11)</div>
+            <div class="cell" id="selector">16</div>
+            <div class="cell" id="selector">
+                <div><b>Magician, Mystic Adept, Adept:</b> Magic 3</div>
+                <div><b>Aspected Magician:</b> Magic 4</div>
+                <div><b>Technomancer:</b> Resonance 3</div>
+            </div>
+            <div class="cell" id="selector">24</div>
+            <div class="cell" id="selector">275.000 ¥</div>
+
+            <div class="cell" id="c">C</div>
+            <div class="cell" id="selector">Dwarf, Elf, Human, Ork, Troll (9)</div>
+            <div class="cell" id="selector">12</div>
+            <div class="cell" id="selector">
+                <div><b>Magician, Mystic Adept, Adept:</b> Magic 2</div>
+                <div><b>Aspected Magician:</b> Magic 3</div>
+                <div><b>Technomancer:</b> Resonance 2</div>
+            </div>
+            <div class="cell" id="selector">20</div>
+            <div class="cell" id="selector">150.000 ¥</div>
+
+            <div class="cell" id="d">D</div>
+            <div class="cell" id="selector">Dwarf, Elf, Human, Ork, Troll (4)</div>
+            <div class="cell" id="selector">8</div>
+            <div class="cell" id="selector">
+                <div><b>Magician, Mystic Adept, Adept:</b> Magic 1</div>
+                <div><b>Aspected Magician:</b> Magic 2</div>
+                <div><b>Technomancer:</b> Resonance 1</div>
+            </div>
+            <div class="cell" id="selector">16</div>
+            <div class="cell" id="selector">50.000 ¥</div>
+
+            <div class="cell" id="e">E</div>
+            <div class="cell" id="selector">Dwarf, Elf, Human, Ork, Troll (1)</div>
+            <div class="cell" id="selector">2</div>
+            <div class="cell" id="selector">Mundane</div>
+            <div class="cell" id="selector">10</div>
+            <div class="cell" id="selector">8.000 ¥</div>
+
+        </div>
+    </div>
+
+
+    <div class="side-container">
+        <div class="character-info">
+            <div class="character-image"></div>
+            <div class="character-text"><b>Name: </b><input class="parameter" id="char-name"></div>
+            <div class="character-text"><b>Alias: </b><input class="parameter" id="char-alias"></div>
+            <div class="character-text">
+                <b>Sex: </b>
+                <select class="parameter" id="char-sex">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="U">Undefined</option>
+                </select>
+            </div>
+            <div class="character-text">
+                <b>Metatype: </b>
+                <select class="parameter" id="char-metatype">
+                    <option value="D">Dwarf</option>
+                    <option value="T">Troll</option>
+                    <option value="O">Ork</option>
+                </select>
+            </div>
+            <div class="character-text">
+                <b>Nature: </b>
+                <select class="parameter" id="char-nature">
+                    <option value="MAG">Magician</option>
+                    <option value="AMAG">Aspected Magician</option>
+                    <option value="MYAD">Mystic Adept</option>
+                    <option value="AD">Adept</option>
+                    <option value="T">Technomancer</option>
+                </select>
+            </div>
+
+            <div class ="spacing">------------------------------------------------</div>
+
+            <div class="character-text"><b>Ethnicity: </b><input class="parameter" id="char-ethnicity"></div>
+            <div class="character-text"><b>Age: </b><input class="parameter" id="char-age" type="number" value="25"></div>
+            <div class="character-text"><b>Height (cm): </b><input class="parameter" id="char-height" value="180"></div>
+            <div class="character-text"><b>Weight (kg): </b><input class="parameter" id="char-weight" value="80"></div>
+
+            <div class="spacing">------------------------------------------------</div>
+
+            <div class="character-text"><b>Reputation: </b><input class="parameter" readonly></div>
+            <div class="character-text"><b>Heat: </b><input class="parameter" readonly></div>
+            <div class="character-text">
+                <b>Lifestyle: </b>
+                <select class="parameter" id="char-lifestyle">
+                    <option value="S">Street (Free)</option>
+                    <option value="SQ">Squatter (500¥ / month)</option>
+                    <option value="L">Low (2.000¥ / month)</option>
+                    <option value="M">Middle (5.000¥ / month)</option>
+                    <option value="H">High (10.000¥ / month)</option>
+                    <option value="LU">Luxury (100.000¥ / month)</option>
+                </select>
+            </div>
+            <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" id="nuyen" value="8.000" readonly></div>
+        </div>
+    </div>
+
+    <script src="FirstPhase.js"></script>
+</body>
+</html>
