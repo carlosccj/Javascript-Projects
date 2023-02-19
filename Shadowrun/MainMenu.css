@@ -7,23 +7,22 @@ body {
 
 .menu {
     display: inline-block;
-    position: relative;
+    position: absolute;
     padding: 10px;
-    margin-left: 1rem;
     background-color:rgba(169, 169, 169, 0.75);
     border: solid rgb(128, 0, 128) 3px;
-    width: 23vw;
+    width: 24vw;
 }
 
 .buttons {
+    width: 18vw;
+    margin: auto;
     margin-top: 0.5rem;
 }
 
 button {
-    font-weight: normal;
+    font-weight: bolder;
     font-size: 1rem;
-    margin: auto;
-    margin-left: 2.5vw;
     margin-bottom: 0.5rem;
     padding: 10px;
     width: 18vw;
@@ -42,20 +41,80 @@ button:active {
     transition: 0.5s;
 }
 
-.characters {
+.main-container {
     display: inline-block;
     position: absolute;
     padding: 10px;
-    margin-left: 2.5rem;
+    right: 10px;
     background-color:rgba(169, 169, 169, 0.75);
     border: solid rgb(128, 0, 128) 3px;
-    width: 65vw;
-    height: 90vh; /* This does not need to be set now */
+    width: 70vw;
+    height: 90vh;
 }
 
 .logo {
     background-image: url('Assets/Logo.png');
-    height: 6rem;
-    width: 34vw;
-    margin-left: 1vw;
+    height: 96px;
+    width: 465px;
+    margin: auto;
+}
+
+.divisions {
+    width: fit-content;
+    margin: auto;
+}
+
+.divisions-buttons {
+    font-weight: bolder;
+    font-size: small;
+    width: 12vw;
+    margin:auto;
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+}
+
+.character-list {
+    overflow-y: scroll;
+    border: 1px rgb(128, 0, 128) solid;
+    margin-top: 1rem;
+    padding: 10px;
+    max-height: 58vh;
+}
+
+.character-list::-webkit-scrollbar {
+    display: none;
+}
+
+.character-info {
+    margin-bottom: 1rem;
+    padding: 5px;
+}
+
+.character-info:hover {
+    background-color: rgba(189, 119, 255, 0.718);
+    border-radius: 3%;
+    transition: 0.8s;
+}
+
+.character-info:last-child {
+    margin-bottom: 0rem;
+}
+
+.character-image {
+    float: right;
+    width: 85px; 
+    height: 85px;
+    border: 1px purple solid;
+    background: url('Assets/default-avatar.jpg');
+    background-size: 100px 100px;
+    padding: 5px;
+}
+
+.prefix {
+    font-weight: bold;
+    font-size: large;
+}
+
+span {
+    font-weight: normal;
 }

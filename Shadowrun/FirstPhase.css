@@ -19,8 +19,8 @@ body {
 .logo {
     display: inline-block;
     background-image: url('Assets/Logo.png');
-    height: 6rem;
-    width: 29rem;
+    height: 96px;
+    width: 465px;
     margin-left: 5px;
 }
 
@@ -150,12 +150,12 @@ button:active {
     margin-bottom: 1px;
 }
 
-/* .parameter {
-    margin-right: 0px;
-} */
+.parameter {
+    float: right;
+}
 
 select {
-    width: 150px
+    width: 185px
 }
 
 .spacing {
