@@ -12,9 +12,9 @@
         
         <div class="logo"></div>
         <div class="buttons">
-            <button onclick="previousScreen()">PREV</button>
-            <button onclick="saveData()">SAVE</button>
-            <button onclick="setDataAndNext()">NEXT</button>
+            <button id="previous-screen">PREV</button>
+            <button id="save-data">SAVE</button>
+            <button id="save-data-and-next">NEXT</button>
         </div>
         
         <div class="grid">
@@ -115,14 +115,23 @@
             <div class ="spacing">------------------------------------------------</div>
 
             <div class="character-text"><b>Ethnicity: </b><input class="parameter" id="char-ethnicity"></div>
-            <div class="character-text"><b>Age: </b><input class="parameter" id="char-age" type="number" value="25"></div>
-            <div class="character-text"><b>Height (cm): </b><input class="parameter" id="char-height" value="180"></div>
-            <div class="character-text"><b>Weight (kg): </b><input class="parameter" id="char-weight" value="80"></div>
+            <div class="character-text"><b>Age: </b><input class="parameter" id="char-age" type="number"></div>
+            <div class="character-text"><b>Height (cm): </b><input class="parameter" id="char-height"></div>
+            <div class="character-text"><b>Weight (kg): </b><input class="parameter" id="char-weight"></div>
 
             <div class="spacing">------------------------------------------------</div>
 
             <div class="character-text"><b>Reputation: </b><input class="parameter" readonly></div>
             <div class="character-text"><b>Heat: </b><input class="parameter" readonly></div>
+            <div class="character-text">
+                <b>Rol: </b>
+                <select class="parameter" id="char-rol">
+                    <option value="SS">Street Samurai</option>
+                    <option value="AS">Arcane Specialist</option>
+                    <option value="FA">Face</option>
+                    <option value="TS">Technology Specialist</option>
+                </select>
+            </div>
             <div class="character-text">
                 <b>Lifestyle: </b>
                 <select class="parameter" id="char-lifestyle">
@@ -137,7 +146,11 @@
             <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" id="nuyen" value="8.000" readonly></div>
         </div>
     </div>
-
-    <script src="FirstPhase.js"></script>
+    <script type="module">
+        import {previousScreen, saveData, saveDataAndNext} from "./FirstPhase.js"
+        document.querySelector('#previous-screen').addEventListener('click', () => {previousScreen()}) 
+        document.querySelector('#save-data').addEventListener('click', () => {saveData()}) 
+        document.querySelector('#save-data-and-next').addEventListener('click', () => {saveDataAndNext()}) 
+    </script>
 </body>
 </html>
