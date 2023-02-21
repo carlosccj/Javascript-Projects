@@ -1,0 +1,9 @@
+{
+  "name": "shadowrun",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "FirstPhase.js",
+  "author": "carlosccj",
+  "license": "ISC"
+}

@@ -1,6 +1,12 @@
+/* There has to be sub-classes based on the 'nature' attribute. Magic classes should have new attributes like an array
+of spells, adept powers, rituals, invocations, enchantments etc... while Technomancers should have their complex forms
+and so. */
+
 
 class MainCharacter {
     constructor() {
+        this.charId
+
         this._charName = ""
         this._alias = ""
         this._sex = 'M'
@@ -18,7 +24,12 @@ class MainCharacter {
         this._skillPoints = 0
         this._attributePoints = 0
         this._resources = 0
+        this._karma = 50
+        this._gear = [] // Gear has to be its own Object
+        this._contacts = [] // Contact has to be its own Object
+        this._qualities = [] // Quality has to be its own Object
 
+        // Attributes, Skills, AR, DR, Initiative
     }
 
     get charName() {
@@ -147,6 +158,14 @@ class MainCharacter {
 
     set resources(newResources) {
         this._resources = newResources;
+    }
+
+    get karma() {
+        return this._karma
+    }
+
+    set karma(newKarma) {
+        this._karma = newKarma
     }
 
 }

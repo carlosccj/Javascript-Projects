@@ -37,7 +37,24 @@ let selectedCellColNumber = 0
 let selectedCellCoordinates = []
 
 let newCharacter = new MainCharacter()
-createGrid()
+
+createInterface()
+createCharacter()
+
+function createInterface() {
+    createGrid()
+    addCheckers()
+    addButtons()
+}
+
+function createCharacter() {
+    if (sessionStorage.length == 0) {
+        newCharacter = new MainCharacter()
+    }
+    else {
+        // Retrieve Character from Database with its 'id' and set the parameters accordingly
+    }
+}
 
 function createGrid() {
     createCellsArray()
@@ -54,10 +71,16 @@ function createGrid() {
             cnt++;
         }
     }
+}
+
+function addCheckers() {
     document.getElementById('char-age').addEventListener('change', () => checkAge())
     document.getElementById('char-height').addEventListener('change', () => checkHeight())
     document.getElementById('char-weight').addEventListener('change', () => checkWeight())
-    document.getElementById('char-metatype').addEventListener('change', () => clearHeightAndWeight())
+    document.getElementById('char-metatype').addEventListener('change', () => clearHeightAndWeight())   
+}
+
+function addButtons() {
     document.getElementById('previous-screen').addEventListener('click', () => previousScreen()) 
     document.getElementById('save-data').addEventListener('click', () => saveData()) 
     document.getElementById('save-data-and-next').addEventListener('click', () => saveDataAndNext())
@@ -177,6 +200,11 @@ function saveData() {
     setWeight()
     setRol()
     setLifestyle()
+
+    /* Metatype, MetaPoints, Nature, MagicAndResonancePoints, skillPoints and attributePoints cannot be changed onwards. 
+    Resources can still be changed through Karma. The rest of the attributes will be passed to the next script as data
+    on sessionStorage, and setted again on the sideContainer clone on the next step, as those can still be changed anytime
+    until the Character is finished */
 }
 
 function saveDataAndNext() {
