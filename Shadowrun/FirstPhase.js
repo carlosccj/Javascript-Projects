@@ -51,13 +51,16 @@ function createGrid() {
             let cellSelected = cnt
             cellsDoc[cellSelected].addEventListener('click', () => changeCellColor(cellSelected))
             cellsDoc[cellSelected].addEventListener('click', () => adjustCharacterOptions())
-            document.getElementById('char-age').addEventListener('change', () => checkAge())
-            document.getElementById('char-height').addEventListener('change', () => checkHeight())
-            document.getElementById('char-weight').addEventListener('change', () => checkWeight())
-            document.getElementById('char-metatype').addEventListener('change', () => clearHeightAndWeight())
             cnt++;
         }
     }
+    document.getElementById('char-age').addEventListener('change', () => checkAge())
+    document.getElementById('char-height').addEventListener('change', () => checkHeight())
+    document.getElementById('char-weight').addEventListener('change', () => checkWeight())
+    document.getElementById('char-metatype').addEventListener('change', () => clearHeightAndWeight())
+    document.getElementById('previous-screen').addEventListener('click', () => previousScreen()) 
+    document.getElementById('save-data').addEventListener('click', () => saveData()) 
+    document.getElementById('save-data-and-next').addEventListener('click', () => saveDataAndNext())
 }
 
 function setMetatype() {
@@ -148,11 +151,11 @@ function setLifestyle() {
 }
 
 
-export function previousScreen() {
+function previousScreen() {
     //It should link to the Main Menu here (no need to save any data at this point)
 }
 
-export function saveData() {
+function saveData() {
     const metatypeCell = getCell(metatypeColumn)
     const attributePointsCell = getCell(attributePointsColumn)
     const natureCell = getCell(natureColumn)
@@ -176,7 +179,7 @@ export function saveData() {
     setLifestyle()
 }
 
-export function saveDataAndNext() {
+function saveDataAndNext() {
     saveData()
 
     console.log("Metatype: " + metatype + "\n" +

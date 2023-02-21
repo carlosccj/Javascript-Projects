@@ -146,11 +146,6 @@
             <div class="character-text"><b>Nuyen ¥: </b><input class="parameter" id="nuyen" value="8.000" readonly></div>
         </div>
     </div>
-    <script type="module">
-        import {previousScreen, saveData, saveDataAndNext} from "./FirstPhase.js"
-        document.querySelector('#previous-screen').addEventListener('click', () => {previousScreen()}) 
-        document.querySelector('#save-data').addEventListener('click', () => {saveData()}) 
-        document.querySelector('#save-data-and-next').addEventListener('click', () => {saveDataAndNext()}) 
-    </script>
+    <script src="FirstPhase.js" type="module"></script> 
 </body>
 </html>
