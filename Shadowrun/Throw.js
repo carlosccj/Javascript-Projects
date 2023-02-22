@@ -2,11 +2,16 @@
 export default class Throw {
     constructor(dicePool) {
         this._die = this.throwDice(dicePool)
-        this._glitch = this.evaluateGlitch(this._die) 
+        this._hits = this.evaluateHits()
+        this._glitch = this.evaluateGlitch()
     }
 
     get die() {
         return this._die
+    }
+
+    get hits() {
+        return this._hits
     }
 
     get glitch() {
@@ -24,11 +29,19 @@ export default class Throw {
         return result
     }
 
-    evaluateGlitch(die) {
-        let glitchCounter = die.length % 2 == 0 ? die.length / 2 + 1 : Math.ceil(die.length / 2)
+    evaluateHits() {
+        let result = 0
+        for (let i = 0; i < this._die.length; i++) {
+            if (this._die[i] > 4) result++
+        }
+        return result
+    }
+
+    evaluateGlitch() {
+        let glitchCounter = this._die.length % 2 == 0 ? this._die.length / 2 + 1 : Math.ceil(this._die.length / 2)
         let result = false
-        for (let i = 0; i < die.length; i++) {
-            if (die[i] == 1) glitchCounter--
+        for (let i = 0; i < this._die.length; i++) {
+            if (this._die[i] == 1) glitchCounter--
         }
         if (glitchCounter <= 0) result = true
         return result
@@ -36,5 +49,6 @@ export default class Throw {
 }
 
 /* let test = new Throw(5)
-console.log(test.die)
-console.log(test.glitch) */
+console.log("This is your throw: " + test.die)
+console.log("Those are the hits: " + test.hits)
+console.log("Did you glitch? " + test.glitch) */
