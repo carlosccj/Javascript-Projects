@@ -39,11 +39,12 @@ export default class Throw {
 
     evaluateGlitch() {
         let glitchCounter = this._die.length % 2 == 0 ? this._die.length / 2 + 1 : Math.ceil(this._die.length / 2)
-        let result = false
+        let result = 0
         for (let i = 0; i < this._die.length; i++) {
             if (this._die[i] == 1) glitchCounter--
         }
-        if (glitchCounter <= 0) result = true
+        if (glitchCounter <= 0 && this._hits <= 0) result = 2
+        else if (glitchCounter <= 0) result = 1
         return result
     }
 }

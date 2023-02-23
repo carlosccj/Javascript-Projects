@@ -73,8 +73,8 @@ class TestExtended {
     }
 }
 
-let test = new TestExtended(3, 6, 0, 10, 1)
+/* let test = new TestExtended(3, 6, 0, 10, 1)
 console.log("This is the list of throws: " + test.throwList)
 console.log("Those are the total hits: " + test.totalHits)
 console.log("Those are the net hits: " + test.netHits)
-console.log("This is the time spent: " + test.timeSpent)
+console.log("This is the time spent: " + test.timeSpent) */
