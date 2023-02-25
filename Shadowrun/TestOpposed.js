@@ -33,8 +33,8 @@ class TestOpposed extends Test {
 }
 
 /* let test = new TestOpposed(2, 3, 0, 2, 3, 0)
-console.log("This is the aggressor throw: " + test.aggressorThrow.die)
-console.log("This is the defender throw: " + test.defenderThrow.die)
+console.log("This is the aggressor throw: " + test.aggressorThrow.dice)
+console.log("This is the defender throw: " + test.defenderThrow.dice)
 console.log("Hits from the aggressor: " + test.aggressorThrow.hits)
 console.log("Hits from the defender: " + test.defenderThrow.hits)
 console.log("The winner is: " + test.winner)

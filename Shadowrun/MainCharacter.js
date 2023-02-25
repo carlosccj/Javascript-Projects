@@ -1,3 +1,6 @@
+import Throw from './Throw.js'
+import ConditionMonitor from './ConditionMonitor.js'
+
 /* There has to be sub-classes based on the 'nature' attribute. Magic classes should have new attributes like an array
 of spells, adept powers, rituals, invocations, enchantments etc... while Technomancers should have their complex forms
 and so. */
@@ -65,45 +68,45 @@ class MainCharacter {
         // Character knowledge and language skills (have to think about it)
 
         // Character condition monitors (this may have to be turned into objects)
-        this._physicalConditionMonitor = Math.ceil(this._body / 2) + 8
-        this._stunConditionMonitor = Math.ceil(this._willpower / 2) + 8
+        this._physicalConditionMonitor = new ConditionMonitor(this._body)
+        this._stunConditionMonitor = new ConditionMonitor(this._willpower)
 
         // Character initiative
         this._initiativeBonus = 0
-        this._initiativeRank = this._reaction + this._intuition + this._initiativeBonus
         this._initiativeDice = 1
-        this._initiative = this._initiativeRank + this._initiativeDice
+        this._initiativeRank = this._reaction + this._intuition + this._initiativeBonus
+        this._initiative = new Throw(this._initiativeRank + this._initiativeDice).totalSum
 
-        // Character AR and DR
-        this._attackRating = 
-        this._defenseRating = 
+        // Character AR and DR (unarmed)
+        this._attackRating = this._strength + this._reaction
+        this._defenseRating = this._body // (+ armor)
 
         // Character data which remains relevant and changing over the entire course of the game
         this._gear = [] // Gear has to be its own Object
         this._contacts = [] // Contact has to be its own Object
 
         // Character actions (this may be an object)
-        this._majorActions =
-        this._minorActions = 
+        this._majorActions = 1
+        this._minorActions = this._initiativeDice + 1
 
         // Character status (have to think about it)
         
     }
 
     get charName() {
-        return this._charName;
+        return this._charName
     }
 
     set charName(newCharName) {
-        this._charName = newCharName;
+        this._charName = newCharName
     }
 
     get alias() {
-        return this._alias;
+        return this._alias
     }
 
     set alias(newAlias) {
-        this._alias = newAlias;
+        this._alias = newAlias
     }
 
     get sex() {
@@ -111,111 +114,111 @@ class MainCharacter {
     }
 
     set sex(newSex) {
-        this._sex = newSex;
+        this._sex = newSex
     }
 
     get ethnicity() {
-        return this._ethnicity;
+        return this._ethnicity
     }
 
     set ethnicity(newEthnicity) {
-        this._ethnicity = newEthnicity;
+        this._ethnicity = newEthnicity
     }
 
     get age() {
-        return this._age;
+        return this._age
     }
 
     set age(newAge) {
-        this._age = newAge;
+        this._age = newAge
     }
 
     get height() {
-        return this._height;
+        return this._height
     }
 
     set height(newHeight) {
-        this._height = newHeight;
+        this._height = newHeight
     }
     
     get weight() {
-        return this._weight;
+        return this._weight
     }
 
     set weight(newWeight) {
-        this._weight = newWeight;
+        this._weight = newWeight
     }
 
     get rol() {
-        return this._rol;
+        return this._rol
     }
 
     set rol(newRol) {
-        this._rol = newRol;
+        this._rol = newRol
     }
 
     get lifestyle() {
-        return this._lifestyle;
+        return this._lifestyle
     }
 
     set lifestyle(newLifestyle) {
-        this._lifestyle = newLifestyle;
+        this._lifestyle = newLifestyle
     }
 
     get metatype() {
-        return this._metatype;
+        return this._metatype
     }
 
     set metatype(newMetatype) {
-        this._metatype = newMetatype;
+        this._metatype = newMetatype
     }
 
     get metaPoints() {
-        return this._metaPoints;
+        return this._metaPoints
     }
 
     set metaPoints(newMetaPoints) {
-        this._metaPoints = newMetaPoints;
+        this._metaPoints = newMetaPoints
     }
 
     get nature() {
-        return this._nature;
+        return this._nature
     }
 
     set nature(newNature) {
-        this._nature = newNature;
+        this._nature = newNature
     }
 
     get magicAndResonancePoints() {
-        return this._magicAndResonancePoints;
+        return this._magicAndResonancePoints
     }
 
     set magicAndResonancePoints(newMagicAndResonancePoints) {
-        this._magicAndResonancePoints = newMagicAndResonancePoints;
+        this._magicAndResonancePoints = newMagicAndResonancePoints
     }
 
     get skillPoints() {
-        return this._skillPoints;
+        return this._skillPoints
     }
 
     set skillPoints(newSkillPoints) {
-        this._skillPoints = newSkillPoints;
+        this._skillPoints = newSkillPoints
     }
 
     get attributePoints() {
-        return this._attributePoints;
+        return this._attributePoints
     }
 
     set attributePoints(newAttributePoints) {
-        this._attributePoints = newAttributePoints;
+        this._attributePoints = newAttributePoints
     }
 
     get resources() {
-        return this._resources;
+        return this._resources
     }
 
     set resources(newResources) {
-        this._resources = newResources;
+        this._resources = newResources
     }
 
     get karma() {

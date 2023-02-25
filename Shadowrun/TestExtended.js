@@ -43,7 +43,7 @@ class TestExtended {
     calculateThrowList(totalTests) {
         let result = []
         for(let i = 0; i < totalTests.length; i++) {
-            result.push("\n[" + totalTests[i].throw.die + "]")
+            result.push("\n[" + totalTests[i].throw.dice + "]")
         }
         return result
     }

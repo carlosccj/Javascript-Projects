@@ -1,13 +1,14 @@
 
 export default class Throw {
     constructor(dicePool) {
-        this._die = this.throwDice(dicePool)
+        this._dice = this.throwDice(dicePool)
         this._hits = this.evaluateHits()
         this._glitch = this.evaluateGlitch()
+        this._totalSum = this.evaluateTotalSum()
     }
 
-    get die() {
-        return this._die
+    get dice() {
+        return this._dice
     }
 
     get hits() {
@@ -16,6 +17,10 @@ export default class Throw {
 
     get glitch() {
         return this._glitch
+    }
+
+    get totalSum() {
+        return this._totalSum
     }
 
     throwDice(dicePool) {
@@ -31,25 +36,33 @@ export default class Throw {
 
     evaluateHits() {
         let result = 0
-        for (let i = 0; i < this._die.length; i++) {
-            if (this._die[i] > 4) result++
+        for (let i = 0; i < this._dice.length; i++) {
+            if (this._dice[i] > 4) result++
         }
         return result
     }
 
     evaluateGlitch() {
-        let glitchCounter = this._die.length % 2 == 0 ? this._die.length / 2 + 1 : Math.ceil(this._die.length / 2)
+        let glitchCounter = this._dice.length % 2 == 0 ? this._dice.length / 2 + 1 : Math.ceil(this._dice.length / 2)
         let result = 0
-        for (let i = 0; i < this._die.length; i++) {
-            if (this._die[i] == 1) glitchCounter--
+        for (let i = 0; i < this._dice.length; i++) {
+            if (this._dice[i] == 1) glitchCounter--
         }
         if (glitchCounter <= 0 && this._hits <= 0) result = 2
         else if (glitchCounter <= 0) result = 1
         return result
     }
+
+    evaluateTotalSum() {
+        let result = 0
+        for(let i = 0; i < this._dice.length; i++) {
+            result += this._dice[i]
+        }
+        return result
+    }
 }
 
 /* let test = new Throw(5)
-console.log("This is your throw: " + test.die)
+console.log("This is your throw: " + test.dice)
 console.log("Those are the hits: " + test.hits)
 console.log("Did you glitch? " + test.glitch) */

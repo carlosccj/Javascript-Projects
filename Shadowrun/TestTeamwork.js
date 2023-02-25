@@ -66,11 +66,11 @@ const hBonuses = [0, 0, 0]
 const test = new TestTeamwork(hSkills, hAttributes, hBonuses, 1, 2, 0, 5)
 console.log("Those are the helpers throws:")
 for (let i = 0; i < 3; i++) {
-    console.log("Helper " + i + ": " + test.helpersThrow[i].die)
+    console.log("Helper " + i + ": " + test.helpersThrow[i].dice)
 }
 console.log("Those are the helpers hits: " + test.helpersHits)
 console.log("Those are the helper glitches: " + test.helpersGlitch)
 console.log("This is the new Leader Bonus: " + test.newLeaderBonus)
-console.log("This is the leader throw: " + test._newLeaderTest.throw.die)
+console.log("This is the leader throw: " + test._newLeaderTest.throw.dice)
 console.log("Those are the Test net hits: " + test.newLeaderTest.netHits)
 console.log("This is the Test result: " + test.newLeaderTest.result) */

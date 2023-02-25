@@ -34,7 +34,7 @@ export default class Test {
 }
 
 /* let test = new Test(3, 2, 0, 3)
-console.log("This is your throw: " + test.throw.die)
+console.log("This is your throw: " + test.throw.dice)
 console.log("Did you glitch?: " + test.throw.glitch)
 console.log("You got " + test.throw.hits + " hits")
 console.log("You got " + test.netHits + " net hits") */
