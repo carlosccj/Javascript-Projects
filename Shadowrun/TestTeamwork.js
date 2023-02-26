@@ -34,7 +34,8 @@ class TestTeamwork {
     calculateHelpersThrows(helpersSkill, helpersLinkedAttribute, helpersBonus) {
         let result = []
         for (let i = 0; i < helpersSkill.length; i++) {
-            const helperDicePool = helpersSkill[i] + helpersLinkedAttribute[i] + helpersBonus[i]
+            const bonus = helpersSkill[i] <= 0 ? helpersBonus[i] - 1 : helpersBonus[i]
+            const helperDicePool = helpersSkill[i] + helpersLinkedAttribute[i] + bonus
             const helperThrow = new Throw(helperDicePool)
             result.push(helperThrow)
         }

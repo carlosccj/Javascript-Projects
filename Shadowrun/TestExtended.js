@@ -2,6 +2,7 @@ import Test from './Test.js'
 
 class TestExtended {
     constructor(skill, linkedAttribute, bonus, threshold, interval) {
+        if (skill <= 0) bonus -= 1
         this._interval = interval
         const totalTests = this.arrayOfTests(skill, linkedAttribute, bonus, threshold)
         this._throwList = this.calculateThrowList(totalTests)

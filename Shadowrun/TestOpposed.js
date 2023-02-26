@@ -4,6 +4,7 @@ import Throw from './Throw.js'
 class TestOpposed extends Test {
     constructor(skillAggressor, linkedAttributeAggressor, bonusAggressor, 
         skillDefender, linkedAttributeDefender, bonusDefender) {
+            bonusDefender = skillDefender <= 0 ? bonusDefender - 1 : bonusDefender
             const threshold = new Throw(skillDefender + linkedAttributeDefender + bonusDefender)
             super(skillAggressor, linkedAttributeAggressor, bonusAggressor, threshold.hits)
             this._defenderThrow = threshold

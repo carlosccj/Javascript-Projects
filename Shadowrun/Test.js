@@ -2,6 +2,7 @@ import Throw from './Throw.js'
 
 export default class Test {
     constructor(skill, linkedAttribute, bonus, threshold) {
+        if (skill <= 0) bonus -= 1
         this._throw = new Throw(skill + linkedAttribute + bonus)
         this._threshold = threshold
         this._netHits = this.evaluateNetHits()
