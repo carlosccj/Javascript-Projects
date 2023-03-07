@@ -48,14 +48,11 @@ class Skill {
         return this._expertise
     }
 
-    upgradeSkill(value) {
-        if (value == undefined) value = 1
-        if (this._skillLevel <= this._maxSkillLevel) {
-            this._skillLevel += value
-        }
+    get specialization() {
+        return this._specialization
     }
 
-    addSpecialization(specializationName) {
+    set specialization(specializationName) {
         const alreadySpecialized = this.checkSpecialization()
         if (!alreadySpecialized) {
             let found = false
@@ -69,12 +66,22 @@ class Skill {
         }
     }
 
+    get expertise() {
+        return this._expertise
+    }
+
+    upgradeSkill(value) {
+        if (value == undefined) value = 1
+        if (this._skillLevel <= this._maxSkillLevel) {
+            this._skillLevel += value
+        }
+    }
+
     addExpertise() {
         const alreadySpecialized = this.checkSpecialization()
         if (alreadySpecialized) {
             this._expertise = this._specialization
             this._specialization = ""
-            this.upgradeSkill(1)
         }
     }
 
@@ -82,6 +89,10 @@ class Skill {
         let result = true
         if (this._specialization == "") result = false
         return result
+    }
+
+    addCustomizedSpecialization(newCustomizedSpecialization) {
+        this._specializationsArray.push(newCustomizedSpecialization)
     }
 }
 
@@ -93,5 +104,8 @@ console.log("Can be used untrained: " + test.untrainedUse)
 console.log("Those are the available specializations: " + test.specializationsArray)
 test.upgradeSkill(2)
 console.log("Actual level of the skill: " + test.skillLevel)
-test.addSpecialization("First Aid")
+test.addCustomizedSpecialization("Bioware")
+test.specialization = "Bioware"
 console.log("This is the specialization: " + test.specialization)
+
+
